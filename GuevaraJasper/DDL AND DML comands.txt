@@ -1,0 +1,103 @@
+CREATE DATABASE IF NOT EXISTS jasperbsis3c;
+
+
+USE jasperbsis3c;
+
+CREATE TABLE IF NOT EXISTS patient (
+    PatientID INT NOT NULL PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    gender VARCHAR(50) NOT NULL,
+    Dateofbirth VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS doctor (
+    DoctorID INT NOT NULL PRIMARY KEY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Specialty VARCHAR(50) NOT NULL,
+    DepartmentID VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS department (
+    DepartmentID INT NOT NULL PRIMARY KEY,
+    DepartmentName VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS appointment (
+    AppointmentID INT NOT NULL PRIMARY KEY,
+    PatientID VARCHAR(50) NOT NULL,
+    DoctorID VARCHAR(50) NOT NULL,
+    RoomID VARCHAR(50) NOT NULL,
+    AppointmentDate VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS room (
+    RoomID INT NOT NULL PRIMARY KEY,
+    RoomNumber VARCHAR(50) NOT NULL,
+    DepartmentID VARCHAR(50) NOT NULL,
+    Status VARCHAR(50) NOT NULL
+);
+
+INSERT INTO department (DepartmentID, DepartmentName)
+VALUES ('1', 'Emergency Physician');
+
+INSERT INTO department (DepartmentID, DepartmentName)
+VALUES ('2', 'Cardiology');
+
+INSERT INTO department (DepartmentID, DepartmentName)
+VALUES ('3', 'Pediatrics');
+
+INSERT INTO patient (PatientID, FirstName, LastName, Gender, DateofBirth)
+VALUES ('1', 'John', 'Smith','Male', '10-05-2000');
+
+INSERT INTO patient (PatientID, FirstName, LastName, Gender, DateofBirth)
+VALUES ('2', 'Emman', 'Johnson','Female', '22-11-1998');
+
+INSERT INTO patient (PatientID, FirstName, LastName, Gender, DateofBirth)
+VALUES ('3', 'Liam', 'Garcia','male', '18-01-2002');
+
+INSERT INTO room (RoomID, RoomNumber, DepartmentID, Status)
+VALUES ('1', '101', 'DEP01','Occupied');
+
+INSERT INTO room (RoomID, RoomNumber, DepartmentID, Status)
+VALUES ('2', '201', 'DEP02','Available');
+
+INSERT INTO room (RoomID, RoomNumber, DepartmentID, Status)
+VALUES ('3', '301', 'DEP03','Occupied');
+
+INSERT INTO appointment (AppointmentID, PatientID, DoctorID, RoomID, AppointmentDate)
+VALUES ('1', 'P001', 'D001','R002', '01-09-2025');
+
+INSERT INTO appointment (AppointmentID, PatientID, DoctorID, RoomID, AppointmentDate)
+VALUES ('2', 'P002', 'D002','R003', '02-09-2025');
+
+INSERT INTO appointment (AppointmentID, PatientID, DoctorID, RoomID, AppointmentDate)
+VALUES ('3', 'P003', 'D003','R001', '03-09-2025');
+
+INSERT INTO doctor (DoctorID, FirstName,LastName, Specialty, DepartmentID)
+VALUES ('1', 'Michael', 'Wilson','Cardiologist', 'DEP02');
+
+INSERT INTO doctor (DoctorID, FirstName,LastName, Specialty, DepartmentID)
+VALUES ('2', 'Sarah', 'Martinez','Pediatrician', 'DEP03');
+
+INSERT INTO doctor (DoctorID, FirstName,LastName, Specialty, DepartmentID)
+VALUES ('3', 'James', 'Anderson','Emergency Physician', 'DEP01');
+
+UPDATE doctor SET username = 'jasper'
+WHERE DoctorID = '1';
+
+UPDATE doctor SET password = 'peypey'
+WHERE DoctorID = '1';
+
+UPDATE doctor SET username = 'guevara'
+WHERE DoctorID = '2';
+
+UPDATE doctor SET password = 'pey'
+WHERE DoctorID = '2';
+
+UPDATE doctor SET username = 'banaria'
+WHERE DoctorID = '3';
+
+UPDATE doctor SET password = 'per'
+WHERE DoctorID = '3';
